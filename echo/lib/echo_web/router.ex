@@ -2,23 +2,30 @@ defmodule EchoWeb.Router do
   use EchoWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_live_flash
-    plug :put_root_layout, {EchoWeb.LayoutView, :root}
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    plug(:accepts, ["html"])
+    plug(:fetch_session)
+    plug(:fetch_live_flash)
+    plug(:put_root_layout, {EchoWeb.LayoutView, :root})
+    plug(:protect_from_forgery)
+    plug(:put_secure_browser_headers)
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug(:accepts, ["json"])
   end
 
   scope "/", EchoWeb do
-    pipe_through :browser
+    pipe_through(:browser)
 
-    live "/", PageLive, :index
-    live "/treasure", TreasureLive, :index
+    live("/", PageLive, :index)
+    live("/treasure", TreasureLive, :index)
+
+    live("/passages", PassageLive.Index, :index)
+    live("/passages/new", PassageLive.Index, :new)
+    live("/passages/:id/edit", PassageLive.Index, :edit)
+
+    live("/passages/:id", PassageLive.Show, :show)
+    live("/passages/:id/show/edit", PassageLive.Show, :edit)
   end
 
   # Other scopes may use custom stacks.
@@ -37,8 +44,8 @@ defmodule EchoWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/" do
-      pipe_through :browser
-      live_dashboard "/dashboard", metrics: EchoWeb.Telemetry
+      pipe_through(:browser)
+      live_dashboard("/dashboard", metrics: EchoWeb.Telemetry)
     end
   end
 end
