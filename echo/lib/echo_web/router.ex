@@ -18,6 +18,7 @@ defmodule EchoWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+    live "/treasure", TreasureLive, :index
   end
 
   # Other scopes may use custom stacks.
