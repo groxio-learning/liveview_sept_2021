@@ -1,6 +1,7 @@
 defmodule Echo.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
+  # the OTP stuff here, lifecycle concerns (start/stop/children, etc...)
   @moduledoc false
 
   use Application

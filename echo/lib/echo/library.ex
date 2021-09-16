@@ -1,6 +1,7 @@
 defmodule Echo.Library do
   @moduledoc """
   The Library context.
+  This interacts with the databasee, thus it's a part of boundary.
   """
 
   import Ecto.Query, warn: false

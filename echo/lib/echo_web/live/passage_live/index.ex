@@ -6,7 +6,7 @@ defmodule EchoWeb.PassageLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, :passages, list_passages())}
+    {:ok, list_passages(socket)}
   end
 
   @impl true
@@ -37,10 +37,10 @@ defmodule EchoWeb.PassageLive.Index do
     passage = Library.get_passage!(id)
     {:ok, _} = Library.delete_passage(passage)
 
-    {:noreply, assign(socket, :passages, list_passages())}
+    {:noreply, list_passages(socket)}
   end
 
-  defp list_passages do
-    Library.list_passages()
+  defp list_passages(socket) do
+    assign(socket, :passages, Library.list_passages())
   end
 end
