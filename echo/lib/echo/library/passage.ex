@@ -2,6 +2,7 @@ defmodule Echo.Library.Passage do
   use Ecto.Schema
   import Ecto.Changeset
 
+  # schema is a macro that implements a "Select *" query
   schema "passages" do
     field(:name, :string)
     field(:phrase, :string)
