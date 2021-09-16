@@ -1,5 +1,5 @@
 <h1>Listing Passages</h1>
-
+<h2><%=  @live_action %></h2>
 <%= if @live_action in [:new, :edit] do %>
   <%= live_modal @socket, EchoWeb.PassageLive.FormComponent,
     id: @passage.id || :new,
