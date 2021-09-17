@@ -18,7 +18,7 @@ defmodule EchoWeb.Router do
     pipe_through(:browser)
 
     live("/", PageLive, :index)
-    live("/treasure", TreasureLive, :index)
+    live("/choose", TreasureLive, :index)
 
     live("/passages", PassageLive.Index, :index)
     live("/passages/new", PassageLive.Index, :new)
