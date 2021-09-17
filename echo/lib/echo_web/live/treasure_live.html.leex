@@ -1,3 +1,4 @@
   <button phx-click="dec">-</button>
-  <h1><%= Math.message(@steps) %></h1>
+  <button phx-click="pick" phx-value-name="<%= @passage.name %>">
+  <%= @passage.phrase %></button>
   <button phx-click="inc">+</button>
