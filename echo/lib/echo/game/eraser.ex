@@ -2,10 +2,13 @@ defmodule Echo.Game.Eraser do
   defstruct [:phrase, :plan]
 
   def new(phrase, steps) do
+    %__MODULE__{phrase: phrase, plan: calc_plan(phrase, steps)}
+  end
+
+  def calc_plan(phrase, steps) do
     len = String.length(phrase) - 1
     step_size = ceil(len / steps)
-    plan = 0..len |> Enum.shuffle() |> Enum.chunk_every(step_size)
-    %__MODULE__{phrase: phrase, plan: plan}
+    0..len |> Enum.shuffle() |> Enum.chunk_every(step_size)
   end
 
   def get_text(eraser) do
