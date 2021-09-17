@@ -2,16 +2,23 @@ defmodule Echo.EraserTest do
   use Echo.DataCase
   alias Echo.Game.Eraser
 
-  def eraser_data, do: Eraser.new("The initial longer phraser", 3)
+  def eraser_data do
+    %Eraser{
+      phrase: "abcde",
+      plan: [[0, 1], [2, 3], [4]]
+    }
+  end
   
   test "eraser function erases all characters" do
     erased = 
       eraser_data()
+      |> assert_key(:phrase, "abcde")
       |> Eraser.erase
+      |> assert_key(:phrase, "__cde")
       |> Eraser.erase
+      |> assert_key(:phrase, "____e")
       |> Eraser.erase
-
-    assert erased.phrase == "__________________________"
+      |> assert_key(:phrase, "_____")
   end
 
 
@@ -21,7 +28,10 @@ defmodule Echo.EraserTest do
     assert c
   end
 
-  
+  def assert_key(game, key, value) do
+    assert Map.get(game, key) == value
+    game
+  end
 
 
 end
