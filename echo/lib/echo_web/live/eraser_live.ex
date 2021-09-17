@@ -1,9 +1,10 @@
 defmodule EchoWeb.EraserLive do
   use EchoWeb, :live_view
   alias Echo.Game.Eraser
+  alias Echo.Game
 
-  def mount(_params, _session, socket) do
-    socket = assign(socket, game: Eraser.new("abcde", 3))
+  def mount(%{"slug" => slug}, _session, socket) do
+    socket = assign(socket, game: Game.new(slug))
     {:ok, socket}
   end
 

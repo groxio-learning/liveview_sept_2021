@@ -19,6 +19,7 @@ defmodule Echo.Library do
 
   """
   def list_passages do
+    # module that doubles a query that retrieves all data.
     Repo.all(Passage)
   end
 

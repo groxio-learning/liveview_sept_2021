@@ -26,7 +26,7 @@ defmodule EchoWeb.Router do
 
     live("/passages/:id", PassageLive.Show, :show)
     live("/passages/:id/show/edit", PassageLive.Show, :edit)
-    live("/eraser", EraserLive)
+    live("/eraser/:slug", EraserLive)
   end
 
   # Other scopes may use custom stacks.
